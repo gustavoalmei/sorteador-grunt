@@ -24,6 +24,10 @@ module.exports = function(grunt){
             html:{
                 files:['./src/index.html'],
                 tasks:['replace:dev']
+            },
+            js:{
+                files:['./src/**/*.js'],
+                tasks:['replace:dev']
             }
         },
         replace:{
@@ -36,7 +40,7 @@ module.exports = function(grunt){
                         },
                         {
                             match:'FILE_JS',
-                            replacement: '../src/scripts/main.js',
+                            replacement: './src/scripts/main.js',
                         }
                     ]
                 },
@@ -46,6 +50,12 @@ module.exports = function(grunt){
                         flatten: true,
                         src: ['src/index.html'],
                         dest: 'dev/'
+                    },
+                    {
+                        expand:true,
+                        flatten: true,
+                        src: ['src/scripts/**/*.js'],
+                        dest: 'dev/scripts/'
                     }
                 ]
             },
